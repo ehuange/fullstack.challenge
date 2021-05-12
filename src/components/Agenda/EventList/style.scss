@@ -1,0 +1,13 @@
+@import 'lib/style';
+
+.department {
+  @include basic-text;
+  color: $blackColor;
+  padding: 5px 5px 5px 16px;
+}
+
+.departmentTitle {
+  box-sizing: border-box;
+  min-height: 40px;
+  padding: 5px 5px;
+}

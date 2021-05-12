@@ -42,19 +42,21 @@ const getUpdatedCalendar = (calendar: Calendar): Calendar => {
 let count = 0
 const getUpdatedAccount = async (account: Account): Promise<Account> => {
   const randomCalendarIndex = getRandomIndex(account.calendars)
+  let error = false
   await wait(200) // Mock a 200ms delay
 
   count++
   // Throw a mocked error every three requests
   if (!(count % 3)) {
     count = 0
-    throw new Error('Unexpected error')
+    error = true
   }
 
   return {
     calendars: account.calendars.map((calendar, index) =>
       index !== randomCalendarIndex ? calendar : getUpdatedCalendar(calendar),
     ),
+    error,
   }
 }
 
